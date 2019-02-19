@@ -1,0 +1,8 @@
+<div class="item-form">
+  <app-item-form [item]="item" (upsertItem)="shoppingCartService.upsertItem($event)"></app-item-form>
+</div>
+<div class="item-list" *ngIf="shoppingCartService.itemCollection$ | async as itemCollection">
+  <app-item-list [dataSource]="itemCollection.items" (deleteItem)="shoppingCartService.deleteItem($event)" (editItem)="setItem($event)"
+    [totalPrice]="itemCollection.totalPrice">
+  </app-item-list>
+</div>
